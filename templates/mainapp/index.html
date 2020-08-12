@@ -1,0 +1,32 @@
+{% extends "mainapp/base.html" %}
+{% block content %}
+    {# TWO COLUMNS #}
+    <div class="uk-flex">
+        {# NAVIGATION COLUMN #}
+        <div class="uk-background-secondary uk-position-relative uk-width-1-6">
+            <div class="uk-card uk-card-secondary uk-card-body uk-position-center-left">
+                <ul class="uk-nav-default uk-nav-center uk-nav-parent-icon uk-nav" uk-nav>
+                    <li class="uk-active"><a href="#">Active</a></li>
+                    <li><a href="#">Item</a></li>
+                    <li><a href="#">Item</a></li>
+                </ul>
+            </div>
+        </div>
+        {# CONTENT COLUMN #}
+        <div class="uk-width-5-6">
+            {# DIFFERENT SUBTITLES #}
+            {% for title in titles %}
+                {% include "titles/title.html" with title=title %}
+            {% endfor %}
+
+            {# GRID WITH MY PROJECTS #}
+            <div class="uk-padding-large">
+                {% if projects %}
+                    {% include "projects/project_card.html" with projects=projects %}
+                {% else %}
+                    <h4>Список проектов пуст</h4>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

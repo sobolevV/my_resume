@@ -1,0 +1,13 @@
+{% extends "mainapp/index.html" %}
+
+{% block content %}
+    <div class="uk-container uk-margin">
+        <h3>{{ project.name }}</h3>
+        <div>
+            {{ project.content|safe }}
+        </div>
+        {% if project.date %}
+            <div class="uk-comment-meta">{{project.date}}</div>
+        {% endif %}
+    </div>
+{% endblock %}

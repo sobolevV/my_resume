@@ -1,0 +1,26 @@
+{% load static %}
+
+<div class="uk-background-secondary uk-padding-small">
+    <div class="uk-flex uk-child-width-1-2 uk-text-primary">
+        <div class="uk-padding-large">
+            <div class="uk-text-light uk-text-large uk-text-uppercase uk-text-center">Что то о чем то</div>
+            <ul class="uk-list uk-text-light">
+                {% for i in "123"|make_list %}
+                    <li>Item {{ i }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="uk-padding-large">
+            <div class="uk-text-light uk-text-large uk-text-uppercase uk-text-center">Что то о чем то</div>
+            <ul class="uk-list uk-text-light">
+                {% for i in "123"|make_list %}
+                    <li>Item {{ i }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="">
+        <img class="uk-align-center" src='{% static "img/sv.svg"%}' height="50" uk-svg>
+    </div>
+</div>

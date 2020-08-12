@@ -1,0 +1,8 @@
+
+
+<div class="uk-padding-large {% if forloop.counter|divisibleby:"2" %} uk-background-secondary {% endif %}">
+    <div class="uk-text-large uk-heading-small uk-text-primary uk-text-light">
+        {{title.name}}
+    </div>
+    {{ title.content|safe }}
+</div>
