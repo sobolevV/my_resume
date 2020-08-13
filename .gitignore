@@ -1,3 +1,5 @@
 /static_root/
+.env
+Procfile.windows
 .idea
 __pycache__
