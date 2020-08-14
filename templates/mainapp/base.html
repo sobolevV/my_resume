@@ -1,16 +1,11 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/uikit.theme.css' %}"/>
-
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/uikit.css' %}">
     <script src="{% static 'js/script.js' %}"></script>
     <script src="{% static 'js/uikit.js' %}"></script>
-{#    <script src="{% static 'js/uikit-core.js' %}"></script>#}
-{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/css/uikit.min.css" />#}
-{#    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/js/uikit.min.js"></script>#}
-{#    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/js/uikit-icons.min.js"></script>#}
 </head>
 
 {# CONTENT #}
@@ -18,10 +13,8 @@
     {# HEADER #}
     {% include 'mainapp/header.html' %}
 
-
     {% block content %}
     {% endblock %}
 
     {% include "mainapp/footer.html" %}
 </body>
-</html>

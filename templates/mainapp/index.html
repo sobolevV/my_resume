@@ -1,4 +1,5 @@
 {% extends "mainapp/base.html" %}
+
 {% block content %}
     {# TWO COLUMNS #}
     <div class="uk-flex">
@@ -15,9 +16,9 @@
         {# CONTENT COLUMN #}
         <div class="uk-width-5-6">
             {# DIFFERENT SUBTITLES #}
-            {% for title in titles %}
-                {% include "titles/title.html" with title=title %}
-            {% endfor %}
+{#            {% for title in titles %}#}
+{#                {% include "titles/title.html" with title=title %}#}
+{#            {% endfor %}#}
 
             {# GRID WITH MY PROJECTS #}
             <div class="uk-padding-large">

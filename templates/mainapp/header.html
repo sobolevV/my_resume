@@ -1,9 +1,8 @@
 {% load static %}
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <title>{{ title }}</title>
 </head>
 
@@ -27,7 +26,7 @@
                 {# LEFT BAR #}
                 <div class="uk-navbar-left">
                     {# LOGO #}
-                    <a class="uk-navbar-item uk-logo" href="{% url 'index' %}">Logo</a>
+                    <a class="uk-navbar-item uk-logo" href="{% url 'mainapp:index' %}">Logo</a>
                 </div>
                 {# CENTER BAR #}
                 <div class="uk-navbar-center">

@@ -1,0 +1,22 @@
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/uikit.css' %}">
+</head>
+<body>
+    <div class="uk-height-viewport uk-background-secondary uk-padding-large">
+        <div class="uk-text-center">
+            <h2 class="uk-text-primary ">{{ error }}</h2>
+            {% if content %}
+                <p class="uk-text-center">{{ content }}</p>
+            {% endif %}
+            <a class="uk-link uk-link-text" href="{% url 'mainapp:index' %}">На главную</a>
+            <br>
+            <div class="uk-margin-large">
+                <img class="uk-svg" src="{% static 'img/sv2.svg'  %}" width="100" alt="">
+            </div>
+        </div>
+    </div>
+</body>

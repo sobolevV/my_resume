@@ -16,12 +16,17 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf.urls import handler404
+from mainapp import views as main_views
+
+handler404 = main_views.myhandler404
 
 urlpatterns = [
-    path('', include('mainapp.urls')),
-
-]
+    path('', include('mainapp.urls', namespace="mainapp")),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.ADMIN_ENABLED:
     urlpatterns += [path(r'admin/', admin.site.urls)]
+
 
