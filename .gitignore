@@ -3,4 +3,5 @@
 Procfile.windows
 .idea
 __pycache__
-/staticfiles/
+/staticfiles/ckeditor/
+/staticfiles/admin/
