@@ -1,26 +1,50 @@
 {% load static %}
 
 <div class="uk-background-secondary uk-padding-small">
-    <div class="uk-flex uk-child-width-1-2 uk-text-primary">
+    <div class="uk-flex uk-child-width-1-2">
         <div class="uk-padding-large">
-            <div class="uk-text-light uk-text-large uk-text-uppercase uk-text-center">Что то о чем то</div>
+            <div class="uk-text-light uk-text-uppercase uk-text-primary">Контакты</div>
             <ul class="uk-list uk-text-light">
-                {% for i in "123"|make_list %}
-                    <li>Item {{ i }}</li>
-                {% endfor %}
+                <li>
+                    <a class="uk-link uk-link-text" href="https://t.me/VadimSob" target="_blank">
+                        <span class="uk-icon uk-icon-image" style="background-image: url({% static 'img/tg.svg' %});"></span>
+                        @VadimSob
+                    </a>
+                </li>
+                <li>
+                    <a class="uk-link uk-link-text" href="mailto:callofdutz@gmail.com" target="_blank">
+                        <span class="uk-icon uk-text-muted" uk-icon="google"></span>
+                        callofdutz@gmail.com
+                    </a>
+                </li>
+                <li>
+                    <a class="uk-link uk-link-text"
+                       href="https://github.com/sobolevV?tab=repositories" target="_blank">
+                        <span class="uk-icon uk-text-muted" uk-icon="github-alt"></span>
+                        GitHub
+                    </a>
+                </li>
+                <li>
+                    <span class="uk-text-bold">hh.ru</span>
+                    <a class="uk-link uk-link-text"
+                       href="https://hh.ru/resume/a0cc364fff07b75d2f0039ed1f505035734464" target="_blank">
+                        Резюме Data Science
+                    </a>
+                </li>
+                <li>
+                    <span class="uk-text-bold">hh.ru</span>
+                    <a class="uk-link uk-link-text"
+                       href="https://hh.ru/resume/ad795d1fff07af85cf0039ed1f6a3373783576" target="_blank">
+                        Резюме Data Analyst
+                    </a>
+                </li>
             </ul>
         </div>
 
         <div class="uk-padding-large">
-            <div class="uk-text-light uk-text-large uk-text-uppercase uk-text-center">Что то о чем то</div>
-            <ul class="uk-list uk-text-light">
-                {% for i in "123"|make_list %}
-                    <li>Item {{ i }}</li>
-                {% endfor %}
-            </ul>
+            <div class="">
+                <img class="uk-align-center" src='{% static "img/sv2.svg"%}' height="100" uk-svg>
+            </div>
         </div>
-    </div>
-    <div class="">
-        <img class="uk-align-center" src='{% static "img/sv.svg"%}' height="50" uk-svg>
     </div>
 </div>

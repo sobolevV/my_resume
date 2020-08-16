@@ -1,27 +1,69 @@
 {% extends "mainapp/base.html" %}
+{% load static %}
+
+{% block photo %}
+    <div class="">
+        {# IMAGE #}
+        <div class="uk-background-cover uk-height-large"
+             data-src="{% static 'img/bg.png' %}?fit=crop&w=650&h=433" data-sizes="min-height: 250px;" alt="" uk-img>
+
+        <div class="uk-text-large uk-text-secondary uk-padding-large uk-padding-remove-bottom uk-text-center">
+            <h2 class="uk-text-muted uk-text-light">Соболев Вадим</h2>
+        </div>
+
+        <div class="uk-width-1-2 uk-text-large uk-padding-large uk-margin-left uk-margin-auto-top uk-margin-auto-right">
+            <h2 class="uk-text-muted uk-text-light" >
+                Резюме
+            </h2>
+            <h4 class="uk-text-muted uk-text-light" >
+                На позиции Data Science и Data Analyst
+            </h4>
+        </div>
+    </div>
+
+{% endblock %}
+
 
 {% block content %}
     {# TWO COLUMNS #}
     <div class="uk-flex">
         {# NAVIGATION COLUMN #}
-        <div class="uk-background-secondary uk-position-relative uk-width-1-6">
-            <div class="uk-card uk-card-secondary uk-card-body uk-position-center-left">
-                <ul class="uk-nav-default uk-nav-center uk-nav-parent-icon uk-nav" uk-nav>
-                    <li class="uk-active"><a href="#">Active</a></li>
-                    <li><a href="#">Item</a></li>
-                    <li><a href="#">Item</a></li>
+    <div class="uk-width-1-6 uk-background-secondary">
+        <div uk-sticky="bottom: #offset;
+                        animation: uk-animation-slide-top; width-element: 150;
+                        cls-active: uk-backgroound-primary">
+            <div class="uk-padding-small uk-background-secondary">
+                <ul class="uk-nav uk-nav-default uk-nav-center uk-background-secondary uk-text-muted uk-list-large">
+                    {% if titles %}
+                        {% for title in titles %}
+                            <li>
+                                <button class="uk-button uk-button-text uk-text-muted" onclick="scrollToId('title{{ title.id }}')">
+                                    {{ title.name }}
+                                </button>
+                            </li>
+                        {% endfor %}
+                        <li>
+                            <button class="uk-button uk-button-text uk-text-muted" onclick=scrollToId('projects')>
+                                Список проектов
+                            </button>
+                        </li>
+                    {% endif %}
+
                 </ul>
             </div>
         </div>
+    </div>
+
         {# CONTENT COLUMN #}
         <div class="uk-width-5-6">
             {# DIFFERENT SUBTITLES #}
-{#            {% for title in titles %}#}
-{#                {% include "titles/title.html" with title=title %}#}
-{#            {% endfor %}#}
-
+            {% if titles %}
+                {% for title in titles %}
+                    {% include "titles/title.html" with title=title %}
+                {% endfor %}
+            {% endif %}
             {# GRID WITH MY PROJECTS #}
-            <div class="uk-padding-large">
+            <div id="projects" class="uk-padding-large">
                 {% if projects %}
                     {% include "projects/project_card.html" with projects=projects %}
                 {% else %}

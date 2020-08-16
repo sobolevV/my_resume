@@ -10,3 +10,6 @@ class Project(models.Model):
     content = RichTextUploadingField(blank=True)
     url = models.URLField(max_length=300, blank=True)
     date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Project: {self.name}"

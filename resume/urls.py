@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
+from django.views.generic import RedirectView
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf.urls import handler404
@@ -24,6 +25,10 @@ handler404 = main_views.myhandler404
 
 urlpatterns = [
     path('', include('mainapp.urls', namespace="mainapp")),
+    path('projects/', include("projects.urls", namespace="projects")),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('favicon.ico', RedirectView.as_view(url='/static/img/icon.ico', permanent=True))
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.ADMIN_ENABLED:

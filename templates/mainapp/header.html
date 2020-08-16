@@ -6,41 +6,17 @@
     <title>{{ title }}</title>
 </head>
 
-<div class="">
-    <div class="uk-position-relative">
-        {# IMAGE #}
-        <img class="uk-svg" src="{% static 'img/bg.jpg' %}" alt="" uk-svg>
-        <div class="uk-overlay uk-position-center-left uk-width-1-2 uk-text-light uk-margin-medium"
-             >
-            <h1 class="uk-h1 uk-heading-small uk-text-uppercase " style="color: white!important;">
-                Заголовок что о чем
-            </h1>
-            <h3 class="uk-h3 uk-heading-small " style="color: white!important;">
-                Тут всякие текст оправданий
-            </h3>
-        </div>
-
-        <div class="uk-position-top uk-text-middle uk-text-uppercase uk-container uk-align-center">
-            {# NAVBAR #}
-            <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
-                {# LEFT BAR #}
-                <div class="uk-navbar-left">
-                    {# LOGO #}
-                    <a class="uk-navbar-item uk-logo" href="{% url 'mainapp:index' %}">Logo</a>
-                </div>
-                {# CENTER BAR #}
-                <div class="uk-navbar-center">
-                    <ul class="uk-navbar-nav">
-                        <li>
-                            <a href="#"> Проекты </a>
-                        </li>
-                        <li>
-                            <a href="#"> Еще </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+<div class="uk-background-secondary">
+    {# NAVBAR #}
+    <div class="uk-container uk-container-expand-left">
+        <ul class="uk-margin-remove" uk-navbar>
+            {# Left BAR #}
+            <div class="uk-navbar-left">
+                <a class="uk-link uk-navbar-item uk-logo" href="{% url 'mainapp:index' %}">
+                    <img class="uk-align-center" src='{% static "img/sv2.svg"%}' height="70" uk-svg>
+                </a>
+            </div>
+        </ul>
     </div>
 </div>
 

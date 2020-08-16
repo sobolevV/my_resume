@@ -3,3 +3,4 @@
 Procfile.windows
 .idea
 __pycache__
+/staticfiles/
