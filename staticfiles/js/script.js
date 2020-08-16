@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("hi");
+
 })
 
-function scrollTo(obj){
-    obj.scrollIntoView({block: "start",  behavior: "smooth"});
+var scrollToId = function (id) {
+    console.log(id);
+    document.getElementById(id).scrollIntoView({block: "start",  behavior: "smooth"});
 }
