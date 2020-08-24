@@ -116,12 +116,14 @@ CKEDITOR_MEDIA_FULL_URL = MEDIA_ROOT  # "http://127.0.0.1:5000/"+MEDIA_ROOT
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        "ENGINE": 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, os.environ.get('DATABASE_URL'))}
-    }
+# DATABASES = {
+#     'default': {
+#         "ENGINE": 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, os.environ.get('DATABASE_URL'))}
+#     }
 
+DATABASES = {'default': dj_database_url.config(conn_max_age=600, ssl_require=True)}
+# DATABASES['default']['engine'] = 'django.db.backends.postgresql_psycopg2'
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
