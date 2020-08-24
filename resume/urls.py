@@ -21,9 +21,13 @@ from django.conf.urls.static import static
 from django.conf.urls import handler404
 from mainapp import views as main_views
 from django.views.generic.base import TemplateView
+from .sitemap import ProjectsSitemap, StaticSitemap
+from django.contrib.sitemaps import views
 import os
 
 handler404 = main_views.myhandler404
+
+sitemaps = {'static': StaticSitemap, 'dynamic': ProjectsSitemap}
 
 urlpatterns = [
     path('', include('mainapp.urls', namespace="mainapp")),
@@ -31,6 +35,8 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('favicon.ico', RedirectView.as_view(url='/static/img/icon.ico', permanent=True)),
     path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
+    path('sitemap.xml', views.index, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('sitemap-<section>.xml', views.sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.ADMIN_ENABLED:

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import dj_database_url
 import os
 
+SITE_ID = 1
 
 ALLOWED_HOSTS = ["127.0.0.1", "sobolev-resume.herokuapp.com", "vadim-sobolev.works"]
 
@@ -39,10 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'mainapp',
     'projects',
     'titles',
-
 ]
 
 if ADMIN_ENABLED:
