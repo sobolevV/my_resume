@@ -1,6 +1,7 @@
-/static_root/
 .env
 Procfile.windows
 .idea
 __pycache__
-/staticfiles/*
+static/*
+staticfiles/*
+db.sqlite3

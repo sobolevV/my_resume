@@ -12,5 +12,6 @@ def index(request):
 
 def myhandler404(request, *args, **kwargs):
     return render(request, 'handlers/404.html',  context={'title': '404 Error',
-                                                                   'error': '404 Error'})
+                                                          'error': '404 Error',
+                                                          'content': 'Заправшиваемая страница не найдена'})
 
