@@ -101,7 +101,7 @@ STATICFILES_FINDERS = (
     )
 
 if DEBUG is False:
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     WSGI_APPLICATION = 'resume.wsgi.application'
 
 # MEDIA CONFIGS
