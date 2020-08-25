@@ -8,9 +8,11 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-# import django_heroku
+import django_heroku
 import dj_database_url
+import environ
 import os
+
 
 SITE_ID = 1
 
@@ -25,9 +27,13 @@ SECRET_KEY = str(os.environ.get("SECRET_KEY"))
 # Admin enabled
 ADMIN_ENABLED = int(os.environ.get("ADMIN_ENABLED", 0))
 
+# SET LOCAL .ENV
+env = environ.Env()
+env.read_env(os.path.join(BASE_DIR, ".env"))
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(os.environ.get("DEBUG", 0))
-DEBUG_COLLECTSTATIC = int(os.environ.get("DEBUG_COLLECTSTATIC", 0))
+DEBUG = env.bool("DEBUG", 0)
+DEBUG_COLLECTSTATIC = env.bool("DEBUG_COLLECTSTATIC", 0)
 DEBUG_TEMPLATES = DEBUG
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
@@ -49,8 +55,6 @@ INSTALLED_APPS = [
     'titles',
 ]
 
-if ADMIN_ENABLED:
-    INSTALLED_APPS += []
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -113,10 +117,9 @@ CKEDITOR_RESTRICT_BY_DATE = False
 CKEDITOR_ALLOW_NONIMAGE_FILES = False
 
 # setting to use your.domian/media_url/
-CKEDITOR_MEDIA_FULL_URL = MEDIA_ROOT  # "http://127.0.0.1:5000/"+MEDIA_ROOT
+CKEDITOR_MEDIA_FULL_URL = MEDIA_ROOT
 
 # Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 # DATABASES = {
 #     'default': {
@@ -124,7 +127,8 @@ CKEDITOR_MEDIA_FULL_URL = MEDIA_ROOT  # "http://127.0.0.1:5000/"+MEDIA_ROOT
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3')}
 #     }
 
-if int(os.environ.get("IS_LOCAL", 1)):
+if env.int("IS_LOCAL", 1):
+    print('local')
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -135,7 +139,7 @@ if int(os.environ.get("IS_LOCAL", 1)):
             'PORT': '5432',
         }
     }
-    DATABASE_URL = "postgres://postgres:password@127.0.0.1:5432/resume"
+    # DATABASE_URL = "postgres://postgres:password@127.0.0.1:5432/resume"
 else:
     DATABASES = {'default': dj_database_url.config(conn_max_age=600, ssl_require=True)}
     # DATABASES['default'].update({'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -212,3 +216,5 @@ CKEDITOR_CONFIGS = {
         ]),
     }
 }
+
+django_heroku.settings(locals())
