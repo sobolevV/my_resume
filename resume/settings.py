@@ -23,15 +23,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = str(os.environ.get("SECRET_KEY"))
 
 # Admin enabled
-ADMIN_ENABLED = bool(int(os.environ.get("ADMIN_ENABLED", 0)))
+ADMIN_ENABLED = int(os.environ.get("ADMIN_ENABLED", 0))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get("DEBUG_COLLECTSTATIC", 0))
-DEBUG_COLLECTSTATIC = True
+DEBUG = int(os.environ.get("DEBUG", 0))
+DEBUG_COLLECTSTATIC = int(os.environ.get("DEBUG_COLLECTSTATIC", 0))
 DEBUG_TEMPLATES = DEBUG
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
-DEBUG_COLLECTSTATIC = bool(os.environ.get("DEBUG_COLLECTSTATIC", 0))
 
 # Application definition
 INSTALLED_APPS = [
@@ -42,17 +41,20 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'django.contrib.admin',
+    'ckeditor',
+    'ckeditor_uploader',
     'mainapp',
     'projects',
     'titles',
 ]
 
 if ADMIN_ENABLED:
-    INSTALLED_APPS += ['django.contrib.admin', 'ckeditor', 'ckeditor_uploader']
+    INSTALLED_APPS += []
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
-'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -119,11 +121,26 @@ CKEDITOR_MEDIA_FULL_URL = MEDIA_ROOT  # "http://127.0.0.1:5000/"+MEDIA_ROOT
 # DATABASES = {
 #     'default': {
 #         "ENGINE": 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, os.environ.get('DATABASE_URL'))}
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3')}
 #     }
 
-DATABASES = {'default': dj_database_url.config(conn_max_age=600, ssl_require=True)}
-# DATABASES['default']['engine'] = 'django.db.backends.postgresql_psycopg2'
+if int(os.environ.get("IS_LOCAL", 1)):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'resume',
+            'USER': 'resume_admin',
+            'PASSWORD': 'password',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
+    DATABASE_URL = "postgres://postgres:password@127.0.0.1:5432/resume"
+else:
+    DATABASES = {'default': dj_database_url.config(conn_max_age=600, ssl_require=True)}
+    # DATABASES['default'].update({'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #                              'NAME': 'postgresql'})
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [

@@ -37,9 +37,10 @@ urlpatterns = [
     path('projects/', include("projects.urls", namespace="projects")),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('favicon.ico', RedirectView.as_view(url='/static/img/icon.ico', permanent=True)),
-    path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
+    path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
     path('sitemap.xml', views.sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 
 if settings.ADMIN_ENABLED:
     urlpatterns += [path(os.environ.get("ADMIN_PATH"), admin.site.urls)]
