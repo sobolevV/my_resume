@@ -8,7 +8,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-import django_heroku
+# import django_heroku
 import dj_database_url
 import environ
 import os
@@ -91,7 +91,7 @@ STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static/")
+    os.path.join(BASE_DIR, "static/"),
 ]
 
 
@@ -101,8 +101,9 @@ STATICFILES_FINDERS = (
     )
 
 if DEBUG is False:
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
     WSGI_APPLICATION = 'resume.wsgi.application'
+
 
 # MEDIA CONFIGS
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
@@ -217,4 +218,4 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
