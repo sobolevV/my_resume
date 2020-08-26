@@ -4,20 +4,21 @@
 {% block photo %}
     <div class="">
         {# IMAGE #}
-        <div class="uk-background-cover uk-height-large"
+        <div class="uk-background-cover uk-relative" uk-height-viewport="offset-top: true"
              data-src="{% static 'img/bg.png' %}?fit=crop&w=650&h=433" data-sizes="min-height: 250px;" alt="" uk-img>
 
         <div class="uk-text-large uk-text-secondary uk-padding-large uk-padding-remove-bottom uk-text-center">
             <h2 class="uk-text-muted uk-text-light">Соболев Вадим</h2>
         </div>
 
-        <div class="uk-width-1-2 uk-text-large uk-padding-large uk-margin-left uk-margin-auto-top uk-margin-auto-right">
-            <h2 class="uk-text-muted uk-text-light" >
+        <div class="uk-width-1-2 uk-text-large uk-padding-large uk-margin-left uk-margin-auto-top uk-margin-auto-right
+                    uk-position-center-left uk-text-large">
+            <h1 class="uk-text-primary uk-text-light">
                 Резюме
-            </h2>
-            <h4 class="uk-text-muted uk-text-light" >
+            </h1>
+            <h3 class="uk-text-muted uk-text-light">
                 На позиции Data Science и Data Analyst
-            </h4>
+            </h3>
         </div>
     </div>
 
