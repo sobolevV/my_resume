@@ -3,5 +3,5 @@ Procfile.windows
 .idea
 __pycache__
 static/*
-media/*
+media/uploads
 db.sqlite3
